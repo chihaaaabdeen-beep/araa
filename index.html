@@ -1,0 +1,1797 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARA BURGER | Fresh. Juicy. Legendary.</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts - Including Arabic font -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600;800&family=Noto+Sans+Arabic:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'ara-red': '#B30000',
+                        'ara-gold': '#FFC107',
+                        'ara-dark': '#121212',
+                        'ara-charcoal': '#1E1E1E',
+                        'ara-cream': '#FFF3E0',
+                        'ara-orange': '#FF4500'
+                    },
+                    fontFamily: {
+                        'display': ['Bebas Neue', 'sans-serif'],
+                        'body': ['Inter', 'Noto Sans Arabic', 'sans-serif'],
+                        'arabic': ['Noto Sans Arabic', 'sans-serif']
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'shimmer': 'shimmer 2s linear infinite',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'fade-in': 'fadeIn 0.3s ease-out'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #121212;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #B30000;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FF4500;
+        }
+
+        /* Text Effects */
+        .text-stroke {
+            -webkit-text-stroke: 2px #B30000;
+            color: transparent;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #FFC107 0%, #FF4500 50%, #B30000 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Glass Morphism */
+        .glass-effect {
+            background: rgba(30, 30, 30, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Patterns */
+        .burger-pattern {
+            background-image: radial-gradient(circle at 2px 2px, rgba(255, 193, 7, 0.15) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+        
+        /* RTL Support */
+        [dir="rtl"] .font-display {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            letter-spacing: 0;
+        }
+        [dir="rtl"] .space-x-2 > * + * {
+            --tw-space-x-reverse: 1;
+        }
+        [dir="rtl"] .space-x-4 > * + * {
+            --tw-space-x-reverse: 1;
+        }
+        [dir="rtl"] .space-x-8 > * + * {
+            --tw-space-x-reverse: 1;
+        }
+        [dir="rtl"] .ml-2 {
+            margin-left: 0;
+            margin-right: 0.5rem;
+        }
+        [dir="rtl"] .ml-4 {
+            margin-left: 0;
+            margin-right: 1rem;
+        }
+        [dir="rtl"] .mr-2 {
+            margin-right: 0;
+            margin-left: 0.5rem;
+        }
+        [dir="rtl"] .mr-3 {
+            margin-right: 0;
+            margin-left: 0.75rem;
+        }
+        [dir="rtl"] .text-left {
+            text-align: right;
+        }
+        [dir="rtl"] .md\:text-left {
+            text-align: right;
+        }
+        
+        /* Language Switcher Animation */
+        .lang-btn {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .lang-btn.active {
+            background: linear-gradient(135deg, #FFC107 0%, #FF4500 100%);
+            color: #121212;
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
+        }
+        
+        /* Menu Card Hover */
+        .menu-card {
+            background: linear-gradient(145deg, #1E1E1E 0%, #2a2a2a 100%);
+            border: 1px solid rgba(255, 193, 7, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(179, 0, 0, 0.3);
+            border-color: rgba(255, 69, 0, 0.5);
+        }
+        
+        /* Price Tag */
+        .price-tag {
+            background: linear-gradient(135deg, #B30000 0%, #FF4500 100%);
+            clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+        }
+        
+        /* Loading Animation */
+        .loader {
+            border: 3px solid rgba(255, 193, 7, 0.1);
+            border-top: 3px solid #FFC107;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Smart Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: linear-gradient(135deg, #1E1E1E 0%, #2a2a2a 100%);
+            border: 2px solid #FFC107;
+            color: white;
+            padding: 16px 24px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            z-index: 9999;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        .toast.success {
+            border-color: #10B981;
+        }
+        .toast.error {
+            border-color: #EF4444;
+        }
+        
+        /* Language Direction Specific Styles */
+        [dir="rtl"] .price-tag {
+            clip-path: polygon(0% 0%, 90% 0%, 100% 100%, 10% 100%);
+        }
+        
+        /* Smooth transitions for content switching */
+        .lang-content {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .lang-content.switching {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+    </style>
+</head>
+<body class="bg-ara-dark text-white font-body overflow-x-hidden burger-pattern">
+
+    <!-- Smart Loading Screen -->
+    <div id="loader-screen" class="fixed inset-0 z-[9999] bg-ara-dark flex flex-col items-center justify-center transition-opacity duration-500">
+        <div class="loader mb-4"></div>
+        <div class="font-display text-2xl text-ara-gold tracking-widest">ARA BURGER</div>
+        <div class="text-gray-500 text-sm mt-2" id="loader-text">Loading...</div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <i class="fas fa-check-circle text-ara-gold text-xl"></i>
+        <span id="toast-message">Item added to cart!</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect border-b border-white/10 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2 rtl:space-x-reverse">
+                    <i class="fas fa-hamburger text-ara-gold text-3xl animate-bounce-slow"></i>
+                    <span class="font-display text-3xl tracking-wider text-white" data-translate="brand">ARA <span class="text-ara-red">BURGER</span></span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center rtl:space-x-reverse">
+                    <a href="#home" class="text-gray-300 hover:text-ara-gold transition-colors font-semibold tracking-wide text-sm uppercase" data-translate="nav_home">Home</a>
+                    <a href="#menu" class="text-gray-300 hover:text-ara-gold transition-colors font-semibold tracking-wide text-sm uppercase" data-translate="nav_menu">Menu</a>
+                    <a href="#subscription" class="text-gray-300 hover:text-ara-gold transition-colors font-semibold tracking-wide text-sm uppercase" data-translate="nav_club">Club</a>
+                    <a href="#about" class="text-gray-300 hover:text-ara-gold transition-colors font-semibold tracking-wide text-sm uppercase" data-translate="nav_about">About</a>
+                    
+                    <!-- Language Switcher -->
+                    <div class="flex items-center bg-ara-charcoal rounded-full p-1 border border-white/10">
+                        <button onclick="switchLang('en')" class="lang-btn w-10 h-10 rounded-full text-xs font-bold flex items-center justify-center text-gray-400 hover:text-white" data-lang="en">EN</button>
+                        <button onclick="switchLang('fr')" class="lang-btn w-10 h-10 rounded-full text-xs font-bold flex items-center justify-center text-gray-400 hover:text-white" data-lang="fr">FR</button>
+                        <button onclick="switchLang('ar')" class="lang-btn w-10 h-10 rounded-full text-xs font-bold flex items-center justify-center text-gray-400 hover:text-white font-arabic" data-lang="ar">ع</button>
+                    </div>
+
+                    <button onclick="openCart()" class="relative bg-ara-red hover:bg-red-700 text-white px-6 py-2 rounded-full font-bold transition-all transform hover:scale-105 flex items-center gap-2">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span data-translate="order">ORDER</span>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-ara-gold text-ara-dark text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center hidden">0</span>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-2xl text-ara-gold" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-effect border-t border-white/10 absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#home" class="block px-3 py-2 text-gray-300 hover:text-ara-gold" data-translate="nav_home">Home</a>
+                <a href="#menu" class="block px-3 py-2 text-gray-300 hover:text-ara-gold" data-translate="nav_menu">Menu</a>
+                <a href="#subscription" class="block px-3 py-2 text-gray-300 hover:text-ara-gold" data-translate="nav_club">Club</a>
+                <a href="#about" class="block px-3 py-2 text-gray-300 hover:text-ara-gold" data-translate="nav_about">About</a>
+                
+                <!-- Mobile Language Switcher -->
+                <div class="flex gap-2 px-3 py-2">
+                    <button onclick="switchLang('en')" class="flex-1 py-2 rounded-lg bg-ara-charcoal border border-white/10 text-sm font-bold" data-translate="lang_en">English</button>
+                    <button onclick="switchLang('fr')" class="flex-1 py-2 rounded-lg bg-ara-charcoal border border-white/10 text-sm font-bold" data-translate="lang_fr">Français</button>
+                    <button onclick="switchLang('ar')" class="flex-1 py-2 rounded-lg bg-ara-charcoal border border-white/10 text-sm font-bold font-arabic" data-translate="lang_ar">العربية</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        <!-- Animated Background -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-ara-red/20 rounded-full blur-3xl animate-pulse-slow"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-ara-gold/10 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 2s;"></div>
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-ara-orange/5 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 4s;"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8 text-center md:text-left rtl:md:text-right lang-content" id="hero-content">
+                <div class="inline-block px-4 py-1 rounded-full border border-ara-gold/30 bg-ara-gold/10 text-ara-gold text-sm font-bold tracking-wider mb-4 animate-float">
+                    <span data-translate="hero_badge">🔥 PREMIUM STREET BURGERS</span>
+                </div>
+                <h1 class="font-display text-6xl md:text-8xl lg:text-9xl leading-none tracking-tight">
+                    <span class="block text-white" data-translate="hero_line1">FRESH.</span>
+                    <span class="block gradient-text" data-translate="hero_line2">JUICY.</span>
+                    <span class="block text-stroke" data-translate="hero_line3">LEGENDARY.</span>
+                </h1>
+                <p class="text-xl text-gray-400 max-w-lg mx-auto md:mx-0 rtl:md:mr-0 rtl:md:ml-auto leading-relaxed" data-translate="hero_desc">
+                    Taste the real burger experience with premium beef, crispy chicken, and our signature sauces. Order now and enjoy the flavor that everyone is talking about.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start rtl:md:justify-end">
+                    <a href="#menu" class="group relative px-8 py-4 bg-gradient-to-r from-ara-red to-ara-orange rounded-full font-bold text-lg overflow-hidden transition-all hover:scale-105 hover:shadow-2xl hover:shadow-ara-red/50">
+                        <span class="relative z-10 flex items-center justify-center gap-2">
+                            <span data-translate="btn_order">ORDER NOW</span> 
+                            <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform rtl:rotate-180"></i>
+                        </span>
+                        <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                    </a>
+                    <a href="https://www.instagram.com/ara1burger" target="_blank" class="px-8 py-4 border-2 border-ara-gold text-ara-gold rounded-full font-bold text-lg hover:bg-ara-gold hover:text-ara-dark transition-all flex items-center justify-center gap-2">
+                        <i class="fab fa-instagram"></i> 
+                        <span data-translate="btn_follow">FOLLOW US</span>
+                    </a>
+                </div>
+                
+                <!-- Stats -->
+                <div class="grid grid-cols-3 gap-6 pt-8 border-t border-white/10">
+                    <div>
+                        <div class="text-3xl font-display text-ara-gold">15K+</div>
+                        <div class="text-sm text-gray-500" data-translate="stat_customers">Happy Customers</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-display text-ara-gold">50+</div>
+                        <div class="text-sm text-gray-500" data-translate="stat_varieties">Burger Varieties</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-display text-ara-gold">4.9</div>
+                        <div class="text-sm text-gray-500" data-translate="stat_rating">Rating</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Visual -->
+            <div class="relative hidden md:block">
+                <div class="relative w-full aspect-square">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-ara-red/30 to-ara-gold/30 rounded-full blur-3xl animate-pulse-slow"></div>
+                    <div class="relative z-10 animate-float">
+                        <div class="w-full h-full rounded-3xl overflow-hidden border-4 border-ara-gold/20 shadow-2xl shadow-ara-red/20 bg-ara-charcoal flex items-center justify-center">
+                            <div class="text-center p-12">
+                                <i class="fas fa-hamburger text-9xl text-ara-gold mb-6 animate-bounce-slow"></i>
+                                <div class="text-6xl font-display text-white mb-2">ARA</div>
+                                <div class="text-4xl font-display text-ara-red">BURGER</div>
+                                <div class="mt-6 text-ara-gold text-xl" data-translate="hero_quality">🔥 Premium Quality</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Floating Badges -->
+                    <div class="absolute -top-4 -right-4 bg-ara-red text-white px-4 py-2 rounded-full font-bold animate-bounce shadow-lg text-sm" data-translate="badge_discount">
+                        -20% OFF
+                    </div>
+                    <div class="absolute -bottom-4 -left-4 bg-ara-gold text-ara-dark px-4 py-2 rounded-full font-bold animate-pulse shadow-lg text-sm" data-translate="badge_new">
+                        NEW: SPICY CHICKEN
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-ara-gold text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- Best Sellers Section -->
+    <section class="py-20 bg-ara-charcoal relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute inset-0" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,193,7,.1) 35px, rgba(255,193,7,.1) 70px);"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 lang-content">
+                <h2 class="font-display text-5xl md:text-6xl text-white mb-4">
+                    <span data-translate="bestseller_title">MOST</span> 
+                    <span class="text-ara-red" data-translate="bestseller_popular">POPULAR</span>
+                </h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto" data-translate="bestseller_desc">
+                    Our customers' favorite burgers, made with premium ingredients and legendary flavor.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Best Seller 1 -->
+                <div class="menu-card rounded-3xl p-6 group cursor-pointer" onclick="addToCart('Cheese Burger Double', 250, 'double')">
+                    <div class="relative overflow-hidden rounded-2xl mb-4 bg-gradient-to-br from-ara-dark to-ara-charcoal aspect-square flex items-center justify-center">
+                        <i class="fas fa-hamburger text-8xl text-ara-red group-hover:scale-110 transition-transform duration-500"></i>
+                        <div class="absolute top-4 right-4 bg-ara-gold text-ara-dark px-3 py-1 rounded-full text-sm font-bold" data-translate="label_bestseller">BEST SELLER</div>
+                    </div>
+                    <h3 class="font-display text-2xl text-white mb-2" data-translate="item_double">CHEESE BURGER DOUBLE</h3>
+                    <p class="text-gray-400 text-sm mb-4" data-translate="desc_double">Double beef patties with melted cheese, fresh veggies, and special sauce.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-3xl font-bold text-ara-gold">250<span class="text-lg text-gray-500">DA</span></span>
+                        <button class="w-12 h-12 rounded-full bg-ara-red hover:bg-red-600 flex items-center justify-center transition-colors">
+                            <i class="fas fa-plus text-white"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Best Seller 2 -->
+                <div class="menu-card rounded-3xl p-6 group cursor-pointer" onclick="addToCart('Cheese Burger Mixte', 250, 'mixte')">
+                    <div class="relative overflow-hidden rounded-2xl mb-4 bg-gradient-to-br from-ara-dark to-ara-charcoal aspect-square flex items-center justify-center">
+                        <i class="fas fa-drumstick-bite text-8xl text-ara-orange group-hover:scale-110 transition-transform duration-500"></i>
+                        <div class="absolute top-4 right-4 bg-ara-red text-white px-3 py-1 rounded-full text-sm font-bold" data-translate="label_hot">HOT</div>
+                    </div>
+                    <h3 class="font-display text-2xl text-white mb-2" data-translate="item_mixte">CHEESE BURGER MIXTE</h3>
+                    <p class="text-gray-400 text-sm mb-4" data-translate="desc_mixte">The perfect mix of beef and chicken with premium cheese blend.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-3xl font-bold text-ara-gold">250<span class="text-lg text-gray-500">DA</span></span>
+                        <button class="w-12 h-12 rounded-full bg-ara-red hover:bg-red-600 flex items-center justify-center transition-colors">
+                            <i class="fas fa-plus text-white"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Best Seller 3 -->
+                <div class="menu-card rounded-3xl p-6 group cursor-pointer" onclick="addToCart('Poulet Crispy', 120, 'crispy')">
+                    <div class="relative overflow-hidden rounded-2xl mb-4 bg-gradient-to-br from-ara-dark to-ara-charcoal aspect-square flex items-center justify-center">
+                        <i class="fas fa-crown text-8xl text-ara-gold group-hover:scale-110 transition-transform duration-500"></i>
+                    </div>
+                    <h3 class="font-display text-2xl text-white mb-2" data-translate="item_crispy">POULET CRISPY</h3>
+                    <p class="text-gray-400 text-sm mb-4" data-translate="desc_crispy">Golden crispy chicken fillet with special spices and creamy mayo.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-3xl font-bold text-ara-gold">120<span class="text-lg text-gray-500">DA</span></span>
+                        <button class="w-12 h-12 rounded-full bg-ara-red hover:bg-red-600 flex items-center justify-center transition-colors">
+                            <i class="fas fa-plus text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Full Menu Section -->
+    <section id="menu" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 lang-content">
+                <span class="text-ara-gold font-bold tracking-widest text-sm uppercase" data-translate="menu_subtitle">Our Menu</span>
+                <h2 class="font-display text-6xl md:text-7xl text-white mt-2 mb-6">
+                    <span data-translate="menu_title1">BURGERS &</span> 
+                    <span class="text-ara-red" data-translate="menu_title2">MORE</span>
+                </h2>
+                
+                <!-- Category Tabs -->
+                <div class="flex flex-wrap justify-center gap-4 mt-8">
+                    <button onclick="filterMenu('all')" class="menu-tab active px-6 py-2 rounded-full border border-ara-gold bg-ara-gold text-ara-dark font-bold transition-all" data-category="all" data-translate="cat_all">ALL</button>
+                    <button onclick="filterMenu('beef')" class="menu-tab px-6 py-2 rounded-full border border-ara-gold text-ara-gold hover:bg-ara-gold hover:text-ara-dark font-bold transition-all" data-category="beef" data-translate="cat_beef">BEEF</button>
+                    <button onclick="filterMenu('chicken')" class="menu-tab px-6 py-2 rounded-full border border-ara-gold text-ara-gold hover:bg-ara-gold hover:text-ara-dark font-bold transition-all" data-category="chicken" data-translate="cat_chicken">CHICKEN</button>
+                    <button onclick="filterMenu('sides')" class="menu-tab px-6 py-2 rounded-full border border-ara-gold text-ara-gold hover:bg-ara-gold hover:text-ara-dark font-bold transition-all" data-category="sides" data-translate="cat_sides">SIDES</button>
+                    <button onclick="filterMenu('drinks')" class="menu-tab px-6 py-2 rounded-full border border-ara-gold text-ara-gold hover:bg-ara-gold hover:text-ara-dark font-bold transition-all" data-category="drinks" data-translate="cat_drinks">DRINKS</button>
+                </div>
+            </div>
+
+            <!-- Menu Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="menu-grid">
+                
+                <!-- Beef Burgers -->
+                <div class="menu-item beef group relative bg-ara-charcoal rounded-2xl p-6 border border-white/5 hover:border-ara-red/50 transition-all hover:shadow-2xl hover:shadow-ara-red/10">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="font-display text-2xl text-white group-hover:text-ara-gold transition-colors" data-translate="item_viande">CHEESE BURGER VIANDE</h3>
+                            <p class="text-gray-500 text-sm mt-1" data-translate="desc_viande">Classic beef patty with melted cheese</p>
+                        </div>
+                        <span class="price-tag px-4 py-1 text-white font-bold text-xl">190DA</span>
+                    </div>
+                    <div class="flex gap-2 mt-4">
+                        <button onclick="addToCart('Cheese Burger Viande', 190, 'viande')" class="flex-1 bg-ara-red hover:bg-red-700 text-white py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2">
+                            <i class="fas fa-plus"></i> 
+                            <span data-translate="btn_add">ADD</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="menu-item beef group relative bg-ara-charcoal rounded-2xl p-6 border border-white/5 hover:border-ara-red/50 transition-all hover:shadow-2xl hover:shadow-ara-red/10">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="font-display text-2xl text-white group-hover:text-ara-gold transition-colors" data-translate="item_double">CHEESE BURGER DOUBLE</h3>
+                            <p class="text-gray-500 text-sm mt-1" data-translate="desc_double_full">Double beef patties, double cheese, double flavor</p>
+                        </div>
+                        <span class="price-tag px-4 py-1 text-white font-bold text-xl">250DA</span>
+                    </div>
+                    <div class="flex gap-2 mt-4">
+                        <button onclick="addToCart('Cheese Burger Double', 250, 'double')" class="flex-1 bg-ara-red hover:bg-red-700 text-white py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2">
+                            <i class="fas fa-plus"></i> 
+                            <span data-translate="btn_add">ADD</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="menu-item beef group relative bg-ara-charcoal rounded-2xl p-6 border border-white/5 hover:border-ara-red/50 transition-all hover:shadow-2xl hover:shadow-ara-red/10">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="font-display text-2xl text-white group-hover:text-ara-gold transition-colors" data-translate="item_mixte">CHEESE BURGER MIXTE</h3>
+                            <p class="text-gray-500 text-sm mt-1" data-translate="desc_mixte_full">Perfect combination of beef and chicken</p>
+                        </div>
+                        <span class="price-tag px-4 py-1 text-white font-bold text-xl">250DA</span>
+                    </div>
+                    <div class="flex gap-2 mt-4">
+                        <button onclick="addToCart('Cheese Burger Mixte', 250, 'mixte')" class="flex-1 bg-ara-red hover:bg-red-700 text-white py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2">
+                            <i class="fas fa-plus"></i> 
+                            <span data-translate="btn_add">ADD</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Chicken Burgers -->
+                <div class="menu-item chicken group relative bg-ara-charcoal rounded-2xl p-6 border border-white/5 hover:border-ara-red/50 transition-all hover:shadow-2xl hover:shadow-ara-red/10">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="font-display text-2xl text-white group-hover:text-ara-gold transition-colors" data-translate="item_poulet">CHEESE BURGER POULET</h3>
+                            <p class="text-gray-500 text-sm mt-1" data-translate="desc_poulet">Grilled chicken with melted cheese</p>
+                        </div>
+                        <span class="price-tag px-4 py-1 text-white font-bold text-xl">170DA</span>
+                    </div>
+                    <div class="flex gap-2 mt-4">
+                        <button onclick="addToCart('Cheese Burger Poulet', 170, 'poulet')" class="flex-1 bg-ara-red hover:bg-red-700 text-white py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2">
+                            <i class="fas fa-plus"></i> 
+                            <span data-translate="btn_add">ADD</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="menu-item chicken group relative bg-ara-charcoal rounded-2xl p-6 border border-white/5 hover:border-ara-red/50 transition-all hover:shadow-2xl hover:shadow-ara-red/10">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="font-display text-2xl text-white group-hover:text-ara-gold transition-colors" data-translate="item_poulet_crispy">CHEESE BURGER POULET CRISPY</h3>
+                            <p class="text-gray-500 text-sm mt-1" data-translate="desc_poulet_crispy">Crispy chicken fillet with premium sauce</p>
+                        </div>
+                        <span class="price-tag px-4 py-1 text-white font-bold text-xl">180DA</span>
+                    </div>
+                    <div class="flex gap-2 mt-4">
+                        <button onclick="addToCart('Cheese Burger Poulet Crispy', 180, 'poulet_crispy')" class="flex-1 bg-ara-red hover:bg-red-700 text-white py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2">
+                            <i class="fas fa-plus"></i> 
+                            <span data-translate="btn_add">ADD</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="menu-item chicken group relative bg-ara-charcoal rounded-2xl p-6 border border-white/5 hover:border-ara-red/50 transition-all hover:shadow-2xl hover:shadow-ara-red/10">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="font-display text-2xl text-white group-hover:text-ara-gold transition-colors" data-translate="item_supreme">CHEESE BURGER SUPRÊME POULET</h3>
+                            <p class="text-gray-500 text-sm mt-1" data-translate="desc_supreme">Premium chicken supreme with special blend</p>
+                        </div>
+                        <span class="price-tag px-4 py-1 text-white font-bold text-xl">180DA</span>
+                    </div>
+                    <div class="flex gap-2 mt-4">
+                        <button onclick="addToCart('Cheese Burger Supreme Poulet', 180, 'supreme')" class="flex-1 bg-ara-red hover:bg-red-700 text-white py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2">
+                            <i class="fas fa-plus"></i> 
+                            <span data-translate="btn_add">ADD</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Chicken Pieces -->
+                <div class="menu-item chicken group relative bg-ara-charcoal rounded-2xl p-6 border border-white/5 hover:border-ara-red/50 transition-all hover:shadow-2xl hover:shadow-ara-red/10">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="font-display text-2xl text-white group-hover:text-ara-gold transition-colors" data-translate="item_crispy_piece">POULET CRISPY</h3>
+                            <p class="text-gray-500 text-sm mt-1" data-translate="desc_crispy_piece">1 piece - Golden crispy chicken fillet</p>
+                        </div>
+                        <span class="price-tag px-4 py-1 text-white font-bold text-xl">120DA</span>
+                    </div>
+                    <div class="flex gap-2 mt-4">
+                        <button onclick="addToCart('Poulet Crispy', 120, 'crispy_piece')" class="flex-1 bg-ara-red hover:bg-red-700 text-white py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2">
+                            <i class="fas fa-plus"></i> 
+                            <span data-translate="btn_add">ADD</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="menu-item chicken group relative bg-ara-charcoal rounded-2xl p-6 border border-white/5 hover:border-ara-red/50 transition-all hover:shadow-2xl hover:shadow-ara-red/10">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="font-display text-2xl text-white group-hover:text-ara-gold transition-colors" data-translate="item_supreme_piece">POULET SUPRÊME</h3>
+                            <p class="text-gray-500 text-sm mt-1" data-translate="desc_supreme_piece">1 piece - Premium chicken supreme</p>
+                        </div>
+                        <span class="price-tag px-4 py-1 text-white font-bold text-xl">120DA</span>
+                    </div>
+                    <div class="flex gap-2 mt-4">
+                        <button onclick="addToCart('Poulet Supreme', 120, 'supreme_piece')" class="flex-1 bg-ara-red hover:bg-red-700 text-white py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2">
+                            <i class="fas fa-plus"></i> 
+                            <span data-translate="btn_add">ADD</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Fries -->
+                <div class="menu-item sides group relative bg-ara-charcoal rounded-2xl p-6 border border-white/5 hover:border-ara-red/50 transition-all hover:shadow-2xl hover:shadow-ara-red/10">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="font-display text-2xl text-white group-hover:text-ara-gold transition-colors" data-translate="item_cajun">FRITE CAJUN</h3>
+                            <p class="text-gray-500 text-sm mt-1" data-translate="desc_cajun">Spicy Cajun seasoned crispy fries</p>
+                        </div>
+                        <span class="price-tag px-4 py-1 text-white font-bold text-xl">120DA</span>
+                    </div>
+                    <div class="flex gap-2 mt-4">
+                        <button onclick="addToCart('Frite Cajun', 120, 'cajun')" class="flex-1 bg-ara-red hover:bg-red-700 text-white py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2">
+                            <i class="fas fa-plus"></i> 
+                            <span data-translate="btn_add">ADD</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="menu-item sides group relative bg-ara-charcoal rounded-2xl p-6 border border-white/5 hover:border-ara-red/50 transition-all hover:shadow-2xl hover:shadow-ara-red/10">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="font-display text-2xl text-white group-hover:text-ara-gold transition-colors" data-translate="item_classique">FRITE CLASSIQUE</h3>
+                            <p class="text-gray-500 text-sm mt-1" data-translate="desc_classique">Classic golden crispy fries</p>
+                        </div>
+                        <span class="price-tag px-4 py-1 text-white font-bold text-xl">100DA</span>
+                    </div>
+                    <div class="flex gap-2 mt-4">
+                        <button onclick="addToCart('Frite Classique', 100, 'classique')" class="flex-1 bg-ara-red hover:bg-red-700 text-white py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2">
+                            <i class="fas fa-plus"></i> 
+                            <span data-translate="btn_add">ADD</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Supplements -->
+                <div class="menu-item sides group relative bg-ara-charcoal rounded-2xl p-6 border border-white/5 hover:border-ara-red/50 transition-all hover:shadow-2xl hover:shadow-ara-red/10">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="font-display text-2xl text-white group-hover:text-ara-gold transition-colors" data-translate="item_camembert">CAMEMBERT</h3>
+                            <p class="text-gray-500 text-sm mt-1" data-translate="desc_camembert">Extra creamy Camembert cheese slice</p>
+                        </div>
+                        <span class="price-tag px-4 py-1 text-white font-bold text-xl">60DA</span>
+                    </div>
+                    <div class="flex gap-2 mt-4">
+                        <button onclick="addToCart('Camembert', 60, 'camembert')" class="flex-1 bg-ara-red hover:bg-red-700 text-white py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2">
+                            <i class="fas fa-plus"></i> 
+                            <span data-translate="btn_add">ADD</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="menu-item sides group relative bg-ara-charcoal rounded-2xl p-6 border border-white/5 hover:border-ara-red/50 transition-all hover:shadow-2xl hover:shadow-ara-red/10">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="font-display text-2xl text-white group-hover:text-ara-gold transition-colors" data-translate="item_kiri">KIRI</h3>
+                            <p class="text-gray-500 text-sm mt-1" data-translate="desc_kiri">Creamy processed cheese spread</p>
+                        </div>
+                        <span class="price-tag px-4 py-1 text-white font-bold text-xl">70DA</span>
+                    </div>
+                    <div class="flex gap-2 mt-4">
+                        <button onclick="addToCart('Kiri', 70, 'kiri')" class="flex-1 bg-ara-red hover:bg-red-700 text-white py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2">
+                            <i class="fas fa-plus"></i> 
+                            <span data-translate="btn_add">ADD</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="menu-item sides group relative bg-ara-charcoal rounded-2xl p-6 border border-white/5 hover:border-ara-red/50 transition-all hover:shadow-2xl hover:shadow-ara-red/10">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="font-display text-2xl text-white group-hover:text-ara-gold transition-colors" data-translate="item_gruyere">GRUYÈRE</h3>
+                            <p class="text-gray-500 text-sm mt-1" data-translate="desc_gruyere">Premium Swiss Gruyère cheese slice</p>
+                        </div>
+                        <span class="price-tag px-4 py-1 text-white font-bold text-xl">100DA</span>
+                    </div>
+                    <div class="flex gap-2 mt-4">
+                        <button onclick="addToCart('Gruyere', 100, 'gruyere')" class="flex-1 bg-ara-red hover:bg-red-700 text-white py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2">
+                            <i class="fas fa-plus"></i> 
+                            <span data-translate="btn_add">ADD</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Drinks -->
+                <div class="menu-item drinks group relative bg-ara-charcoal rounded-2xl p-6 border border-white/5 hover:border-ara-red/50 transition-all hover:shadow-2xl hover:shadow-ara-red/10">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="font-display text-2xl text-white group-hover:text-ara-gold transition-colors" data-translate="item_canette">GAZEUSE CANETTE</h3>
+                            <p class="text-gray-500 text-sm mt-1" data-translate="desc_canette">Soda can - Various flavors</p>
+                        </div>
+                        <span class="price-tag px-4 py-1 text-white font-bold text-xl">90DA</span>
+                    </div>
+                    <div class="flex gap-2 mt-4">
+                        <button onclick="addToCart('Gazeuse Canette', 90, 'canette')" class="flex-1 bg-ara-red hover:bg-red-700 text-white py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2">
+                            <i class="fas fa-plus"></i> 
+                            <span data-translate="btn_add">ADD</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="menu-item drinks group relative bg-ara-charcoal rounded-2xl p-6 border border-white/5 hover:border-ara-red/50 transition-all hover:shadow-2xl hover:shadow-ara-red/10">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="font-display text-2xl text-white group-hover:text-ara-gold transition-colors" data-translate="item_bouteille">GAZEUSE BOUTEILLE</h3>
+                            <p class="text-gray-500 text-sm mt-1" data-translate="desc_bouteille">Soda bottle - 500ml</p>
+                        </div>
+                        <span class="price-tag px-4 py-1 text-white font-bold text-xl">70DA</span>
+                    </div>
+                    <div class="flex gap-2 mt-4">
+                        <button onclick="addToCart('Gazeuse Bouteille', 70, 'bouteille')" class="flex-1 bg-ara-red hover:bg-red-700 text-white py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2">
+                            <i class="fas fa-plus"></i> 
+                            <span data-translate="btn_add">ADD</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="menu-item drinks group relative bg-ara-charcoal rounded-2xl p-6 border border-white/5 hover:border-ara-red/50 transition-all hover:shadow-2xl hover:shadow-ara-red/10">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="font-display text-2xl text-white group-hover:text-ara-gold transition-colors" data-translate="item_jus">JUS BOUTEILLE</h3>
+                            <p class="text-gray-500 text-sm mt-1" data-translate="desc_jus">Fresh fruit juice bottle</p>
+                        </div>
+                        <span class="price-tag px-4 py-1 text-white font-bold text-xl">80DA</span>
+                    </div>
+                    <div class="flex gap-2 mt-4">
+                        <button onclick="addToCart('Jus Bouteille', 80, 'jus')" class="flex-1 bg-ara-red hover:bg-red-700 text-white py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2">
+                            <i class="fas fa-plus"></i> 
+                            <span data-translate="btn_add">ADD</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscription Section -->
+    <section id="subscription" class="py-24 bg-gradient-to-br from-ara-charcoal to-ara-dark relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23B30000&quot; fill-opacity=&quot;0.2&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+        </div>
+
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="glass-effect rounded-3xl p-8 md:p-12 border border-ara-gold/30 shadow-2xl shadow-ara-red/20 lang-content">
+                <div class="text-center mb-12">
+                    <div class="inline-block px-4 py-1 rounded-full bg-ara-gold/20 text-ara-gold text-sm font-bold tracking-wider mb-4" data-translate="club_badge">EXCLUSIVE MEMBERSHIP</div>
+                    <h2 class="font-display text-5xl md:text-6xl text-white mb-4">
+                        <span data-translate="club_title1">JOIN THE</span> 
+                        <span class="text-ara-red" data-translate="club_title2">ARA CLUB</span>
+                    </h2>
+                    <p class="text-gray-400 text-lg" data-translate="club_desc">Unlock exclusive benefits made for burger addicts.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-ara-gold text-xl"></i>
+                            <span class="text-gray-300" data-translate="benefit1">Special member-only discounts</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-ara-gold text-xl"></i>
+                            <span class="text-gray-300" data-translate="benefit2">Free fries on selected orders</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-ara-gold text-xl"></i>
+                            <span class="text-gray-300" data-translate="benefit3">Early access to new burgers</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-ara-gold text-xl"></i>
+                            <span class="text-gray-300" data-translate="benefit4">Surprise deals every week</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-ara-gold text-xl"></i>
+                            <span class="text-gray-300" data-translate="benefit5">Loyalty points for every purchase</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-ara-dark/50 rounded-2xl p-6 border border-white/10">
+                        <div class="text-center">
+                            <div class="text-gray-400 mb-2" data-translate="monthly_sub">Monthly Subscription</div>
+                            <div class="text-5xl font-display text-white mb-4">1500<span class="text-2xl text-ara-gold">DA</span><span class="text-lg text-gray-500">/<span data-translate="month">month</span></span></div>
+                            <button class="w-full py-4 bg-gradient-to-r from-ara-gold to-ara-orange text-ara-dark font-bold rounded-xl hover:shadow-lg hover:scale-105 transition-all" data-translate="btn_subscribe">
+                                SUBSCRIBE NOW
+                            </button>
+                            <p class="text-xs text-gray-500 mt-4" data-translate="cancel_note">Cancel anytime. No hidden fees.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-20 bg-ara-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center p-6 rounded-2xl bg-ara-charcoal/50 border border-white/5 hover:border-ara-gold/30 transition-all group">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-ara-red/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fas fa-leaf text-ara-red text-2xl"></i>
+                    </div>
+                    <h3 class="font-display text-xl text-white mb-2" data-translate="why_fresh">FRESH DAILY</h3>
+                    <p class="text-gray-500 text-sm" data-translate="why_fresh_desc">Ingredients sourced fresh every morning</p>
+                </div>
+                <div class="text-center p-6 rounded-2xl bg-ara-charcoal/50 border border-white/5 hover:border-ara-gold/30 transition-all group">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-ara-gold/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fas fa-fire text-ara-gold text-2xl"></i>
+                    </div>
+                    <h3 class="font-display text-xl text-white mb-2" data-translate="why_flavor">BIG FLAVORS</h3>
+                    <p class="text-gray-500 text-sm" data-translate="why_flavor_desc">Bold seasoning and special sauces</p>
+                </div>
+                <div class="text-center p-6 rounded-2xl bg-ara-charcoal/50 border border-white/5 hover:border-ara-gold/30 transition-all group">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-ara-orange/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fas fa-shipping-fast text-ara-orange text-2xl"></i>
+                    </div>
+                    <h3 class="font-display text-xl text-white mb-2" data-translate="why_delivery">FAST DELIVERY</h3>
+                    <p class="text-gray-500 text-sm" data-translate="why_delivery_desc">Hot and fresh to your door in 30 mins</p>
+                </div>
+                <div class="text-center p-6 rounded-2xl bg-ara-charcoal/50 border border-white/5 hover:border-ara-gold/30 transition-all group">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-green-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fas fa-award text-green-500 text-2xl"></i>
+                    </div>
+                    <h3 class="font-display text-xl text-white mb-2" data-translate="why_quality">PREMIUM QUALITY</h3>
+                    <p class="text-gray-500 text-sm" data-translate="why_quality_desc">High-grade beef and chicken only</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="py-20 bg-ara-charcoal relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="font-display text-5xl text-center text-white mb-16 lang-content">
+                <span data-translate="reviews_title1">WHAT PEOPLE</span> 
+                <span class="text-ara-red" data-translate="reviews_title2">SAY</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-ara-dark p-8 rounded-2xl border border-white/5 relative hover:border-ara-gold/30 transition-all">
+                    <div class="flex text-ara-gold mb-4">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 mb-4" data-translate="review1">"The beef is insanely juicy. Best burger I've had in Algeria!"</p>
+                    <div class="font-bold text-white">- Ahmed K.</div>
+                </div>
+                <div class="bg-ara-dark p-8 rounded-2xl border border-white/5 relative hover:border-ara-gold/30 transition-all">
+                    <div class="flex text-ara-gold mb-4">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 mb-4" data-translate="review2">"Best fries in town. The Cajun seasoning is addictive."</p>
+                    <div class="font-bold text-white">- Sarah M.</div>
+                </div>
+                <div class="bg-ara-dark p-8 rounded-2xl border border-white/5 relative hover:border-ara-gold/30 transition-all">
+                    <div class="flex text-ara-gold mb-4">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 mb-4" data-translate="review3">"Fast delivery and clean packaging. ARA Burger is my go-to!"</p>
+                    <div class="font-bold text-white">- Karim B.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-ara-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="lang-content">
+                    <h2 class="font-display text-5xl text-white mb-6">
+                        <span data-translate="about_title1">OUR</span> 
+                        <span class="text-ara-red" data-translate="about_title2">STORY</span>
+                    </h2>
+                    <p class="text-gray-400 text-lg leading-relaxed mb-6" data-translate="about_desc1">
+                        ARA BURGER is more than just a burger spot — it's a full flavor experience built for real burger lovers. We serve premium smashed burgers, juicy grilled beef, crispy chicken, and handcrafted sauces made to deliver the perfect bite every time.
+                    </p>
+                    <p class="text-gray-400 text-lg leading-relaxed mb-6" data-translate="about_desc2">
+                        Every meal is prepared fresh, using high-quality ingredients, soft toasted buns, and bold flavors that satisfy your hunger instantly.
+                    </p>
+                    <div class="flex gap-4">
+                        <div class="text-center">
+                            <div class="text-3xl font-display text-ara-gold">2022</div>
+                            <div class="text-sm text-gray-500" data-translate="established">Established</div>
+                        </div>
+                        <div class="w-px bg-white/10"></div>
+                        <div class="text-center">
+                            <div class="text-3xl font-display text-ara-gold">Algiers</div>
+                            <div class="text-sm text-gray-500" data-translate="location">Location</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="aspect-square rounded-3xl bg-gradient-to-br from-ara-red to-ara-orange p-1">
+                        <div class="w-full h-full rounded-3xl bg-ara-charcoal flex items-center justify-center">
+                            <div class="text-center p-8">
+                                <i class="fas fa-hamburger text-9xl text-ara-gold mb-4 animate-float"></i>
+                                <div class="text-4xl font-display text-white" data-translate="made_with">MADE WITH</div>
+                                <div class="text-4xl font-display text-ara-red" data-translate="passion">PASSION</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-ara-charcoal">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="font-display text-5xl text-white mb-8 lang-content">
+                <span data-translate="contact_title1">GET IN</span> 
+                <span class="text-ara-red" data-translate="contact_title2">TOUCH</span>
+            </h2>
+            <p class="text-gray-400 text-lg mb-12" data-translate="contact_desc">Need help with your order? Want to ask about ingredients or delivery? We're always here for you.</p>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <a href="https://wa.me/213XXXXXXXXX" target="_blank" class="group bg-green-600 hover:bg-green-700 p-8 rounded-2xl transition-all hover:scale-105">
+                    <i class="fab fa-whatsapp text-5xl text-white mb-4 group-hover:scale-110 transition-transform inline-block"></i>
+                    <h3 class="font-display text-2xl text-white mb-2">WHATSAPP</h3>
+                    <p class="text-green-100" data-translate="whatsapp_desc">Fast replies & order tracking</p>
+                </a>
+                <a href="https://www.instagram.com/ara1burger" target="_blank" class="group bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 p-8 rounded-2xl transition-all hover:scale-105">
+                    <i class="fab fa-instagram text-5xl text-white mb-4 group-hover:scale-110 transition-transform inline-block"></i>
+                    <h3 class="font-display text-2xl text-white mb-2">INSTAGRAM</h3>
+                    <p class="text-white/80" data-translate="insta_desc">Follow for new burgers & deals</p>
+                </a>
+            </div>
+
+            <div class="glass-effect rounded-2xl p-8 border border-white/10">
+                <h3 class="font-display text-2xl text-white mb-4" data-translate="hours_title">OPENING HOURS</h3>
+                <div class="flex justify-center gap-8 text-gray-300">
+                    <div>
+                        <div class="font-bold text-ara-gold" data-translate="days_week">Mon - Thu</div>
+                        <div>10:00 - 22:00</div>
+                    </div>
+                    <div>
+                        <div class="font-bold text-ara-gold" data-translate="days_weekend">Fri - Sun</div>
+                        <div>10:00 - 23:00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-ara-dark border-t border-white/10 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <i class="fas fa-hamburger text-ara-gold text-2xl"></i>
+                        <span class="font-display text-2xl text-white">ARA <span class="text-ara-red">BURGER</span></span>
+                    </div>
+                    <p class="text-gray-500 text-sm" data-translate="footer_desc">Fresh. Juicy. Legendary. Taste the real burger experience.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4" data-translate="quick_links">QUICK LINKS</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#home" class="hover:text-ara-gold transition-colors" data-translate="nav_home">Home</a></li>
+                        <li><a href="#menu" class="hover:text-ara-gold transition-colors" data-translate="nav_menu">Menu</a></li>
+                        <li><a href="#subscription" class="hover:text-ara-gold transition-colors" data-translate="nav_club">Club</a></li>
+                        <li><a href="#about" class="hover:text-ara-gold transition-colors" data-translate="nav_about">About</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4" data-translate="contact_info">CONTACT</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fab fa-instagram mr-2"></i> @ara1burger</li>
+                        <li><i class="fab fa-whatsapp mr-2"></i> <span data-translate="whatsapp_support">WhatsApp Support</span></li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i> <span data-translate="algiers">Algiers, Algeria</span></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4" data-translate="newsletter">NEWSLETTER</h4>
+                    <div class="flex">
+                        <input type="email" placeholder="Email" class="bg-ara-charcoal border border-white/10 rounded-l-lg px-4 py-2 text-white w-full focus:outline-none focus:border-ara-gold text-sm">
+                        <button class="bg-ara-red hover:bg-red-700 px-4 py-2 rounded-r-lg transition-colors">
+                            <i class="fas fa-paper-plane text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8 text-center text-gray-500 text-sm">
+                <p>&copy; 2026 ARA BURGER – <span data-translate="rights">All Rights Reserved</span>. <span data-translate="made_with_love">Made with passion for burger lovers</span>.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/213XXXXXXXXX" target="_blank" class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all animate-bounce-slow">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeCart()"></div>
+        <div class="absolute right-0 top-0 h-full w-full max-w-md bg-ara-charcoal border-l border-white/10 shadow-2xl transform transition-transform duration-300 translate-x-full rtl:translate-x-full rtl:right-auto rtl:left-0 rtl:border-l-0 rtl:border-r" id="cart-panel">
+            <div class="p-6 h-full flex flex-col">
+                div class="flex justify-between items-center mb-6">
+                    <h2 class="font-display text-3xl text-white">
+                        <span data-translate="your_order">YOUR</span> 
+                        <span class="text-ara-red" data-translate="order">ORDER</span>
+                    </h2>
+                    <button onclick="closeCart()" class="text-gray-400 hover:text-white text-2xl">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div id="cart-items" class="flex-1 overflow-y-auto space-y-4 mb-6 scroll-hidden">
+                    <div class="text-center text-gray-500 py-12">
+                        <i class="fas fa-shopping-basket text-4xl mb-4 opacity-50"></i>
+                        <p data-translate="empty_cart">Your cart is empty</p>
+                    </div>
+                </div>
+
+                <div class="border-t border-white/10 pt-4 space-y-4">
+                    <div class="flex justify-between text-xl font-bold text-white">
+                        <span data-translate="total">TOTAL</span>
+                        <span id="cart-total">0 DA</span>
+                    </div>
+                    <button onclick="checkout()" class="w-full py-4 bg-gradient-to-r from-ara-red to-ara-orange rounded-xl font-bold text-lg hover:shadow-lg hover:scale-105 transition-all" data-translate="checkout">
+                        CHECKOUT
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Translation Dictionary -->
+    <script>
+        const translations = {
+            en: {
+                // Navigation
+                nav_home: "Home",
+                nav_menu: "Menu",
+                nav_club: "Club",
+                nav_about: "About",
+                order: "ORDER",
+                lang_en: "English",
+                lang_fr: "Français",
+                lang_ar: "العربية",
+                
+                // Hero
+                hero_badge: "🔥 PREMIUM STREET BURGERS",
+                hero_line1: "FRESH.",
+                hero_line2: "JUICY.",
+                hero_line3: "LEGENDARY.",
+                hero_desc: "Taste the real burger experience with premium beef, crispy chicken, and our signature sauces. Order now and enjoy the flavor that everyone is talking about.",
+                btn_order: "ORDER NOW",
+                btn_follow: "FOLLOW US",
+                hero_quality: "🔥 Premium Quality",
+                badge_discount: "-20% OFF",
+                badge_new: "NEW: SPICY CHICKEN",
+                
+                // Stats
+                stat_customers: "Happy Customers",
+                stat_varieties: "Burger Varieties",
+                stat_rating: "Rating",
+                
+                // Best Sellers
+                bestseller_title: "MOST",
+                bestseller_popular: "POPULAR",
+                bestseller_desc: "Our customers' favorite burgers, made with premium ingredients and legendary flavor.",
+                label_bestseller: "BEST SELLER",
+                label_hot: "HOT",
+                item_double: "CHEESE BURGER DOUBLE",
+                desc_double: "Double beef patties with melted cheese, fresh veggies, and special sauce.",
+                item_mixte: "CHEESE BURGER MIXTE",
+                desc_mixte: "The perfect mix of beef and chicken with premium cheese blend.",
+                item_crispy: "POULET CRISPY",
+                desc_crispy: "Golden crispy chicken fillet with special spices and creamy mayo.",
+                
+                // Menu Categories
+                menu_subtitle: "Our Menu",
+                menu_title1: "BURGERS &",
+                menu_title2: "MORE",
+                cat_all: "ALL",
+                cat_beef: "BEEF",
+                cat_chicken: "CHICKEN",
+                cat_sides: "SIDES",
+                cat_drinks: "DRINKS",
+                btn_add: "ADD",
+                
+                // Menu Items
+                item_viande: "CHEESE BURGER VIANDE",
+                desc_viande: "Classic beef patty with melted cheese",
+                desc_double_full: "Double beef patties, double cheese, double flavor",
+                desc_mixte_full: "Perfect combination of beef and chicken",
+                item_poulet: "CHEESE BURGER POULET",
+                desc_poulet: "Grilled chicken with melted cheese",
+                item_poulet_crispy: "CHEESE BURGER POULET CRISPY",
+                desc_poulet_crispy: "Crispy chicken fillet with premium sauce",
+                item_supreme: "CHEESE BURGER SUPRÊME POULET",
+                desc_supreme: "Premium chicken supreme with special blend",
+                item_crispy_piece: "POULET CRISPY",
+                desc_crispy_piece: "1 piece - Golden crispy chicken fillet",
+                item_supreme_piece: "POULET SUPRÊME",
+                desc_supreme_piece: "1 piece - Premium chicken supreme",
+                item_cajun: "FRITE CAJUN",
+                desc_cajun: "Spicy Cajun seasoned crispy fries",
+                item_classique: "FRITE CLASSIQUE",
+                desc_classique: "Classic golden crispy fries",
+                item_camembert: "CAMEMBERT",
+                desc_camembert: "Extra creamy Camembert cheese slice",
+                item_kiri: "KIRI",
+                desc_kiri: "Creamy processed cheese spread",
+                item_gruyere: "GRUYÈRE",
+                desc_gruyere: "Premium Swiss Gruyère cheese slice",
+                item_canette: "GAZEUSE CANETTE",
+                desc_canette: "Soda can - Various flavors",
+                item_bouteille: "GAZEUSE BOUTEILLE",
+                desc_bouteille: "Soda bottle - 500ml",
+                item_jus: "JUS BOUTEILLE",
+                desc_jus: "Fresh fruit juice bottle",
+                
+                // Club
+                club_badge: "EXCLUSIVE MEMBERSHIP",
+                club_title1: "JOIN THE",
+                club_title2: "ARA CLUB",
+                club_desc: "Unlock exclusive benefits made for burger addicts.",
+                benefit1: "Special member-only discounts",
+                benefit2: "Free fries on selected orders",
+                benefit3: "Early access to new burgers",
+                benefit4: "Surprise deals every week",
+                benefit5: "Loyalty points for every purchase",
+                monthly_sub: "Monthly Subscription",
+                month: "month",
+                btn_subscribe: "SUBSCRIBE NOW",
+                cancel_note: "Cancel anytime. No hidden fees.",
+                
+                // Why Choose Us
+                why_fresh: "FRESH DAILY",
+                why_fresh_desc: "Ingredients sourced fresh every morning",
+                why_flavor: "BIG FLAVORS",
+                why_flavor_desc: "Bold seasoning and special sauces",
+                why_delivery: "FAST DELIVERY",
+                why_delivery_desc: "Hot and fresh to your door in 30 mins",
+                why_quality: "PREMIUM QUALITY",
+                why_quality_desc: "High-grade beef and chicken only",
+                
+                // Reviews
+                reviews_title1: "WHAT PEOPLE",
+                reviews_title2: "SAY",
+                review1: "\"The beef is insanely juicy. Best burger I've had in Algeria!\"",
+                review2: "\"Best fries in town. The Cajun seasoning is addictive.\"",
+                review3: "\"Fast delivery and clean packaging. ARA Burger is my go-to!\"",
+                
+                // About
+                about_title1: "OUR",
+                about_title2: "STORY",
+                about_desc1: "ARA BURGER is more than just a burger spot — it's a full flavor experience built for real burger lovers. We serve premium smashed burgers, juicy grilled beef, crispy chicken, and handcrafted sauces made to deliver the perfect bite every time.",
+                about_desc2: "Every meal is prepared fresh, using high-quality ingredients, soft toasted buns, and bold flavors that satisfy your hunger instantly.",
+                established: "Established",
+                location: "Location",
+                made_with: "MADE WITH",
+                passion: "PASSION",
+                
+                // Contact
+                contact_title1: "GET IN",
+                contact_title2: "TOUCH",
+                contact_desc: "Need help with your order? Want to ask about ingredients or delivery? We're always here for you.",
+                whatsapp_desc: "Fast replies & order tracking",
+                insta_desc: "Follow for new burgers & deals",
+                hours_title: "OPENING HOURS",
+                days_week: "Mon - Thu",
+                days_weekend: "Fri - Sun",
+                
+                // Footer
+                footer_desc: "Fresh. Juicy. Legendary. Taste the real burger experience.",
+                quick_links: "QUICK LINKS",
+                contact_info: "CONTACT",
+                whatsapp_support: "WhatsApp Support",
+                algiers: "Algiers, Algeria",
+                newsletter: "NEWSLETTER",
+                rights: "All Rights Reserved",
+                made_with_love: "Made with passion for burger lovers",
+                
+                // Cart
+                your_order: "YOUR",
+                empty_cart: "Your cart is empty",
+                total: "TOTAL",
+                checkout: "CHECKOUT"
+            },
+            
+            fr: {
+                // Navigation
+                nav_home: "Accueil",
+                nav_menu: "Menu",
+                nav_club: "Club",
+                nav_about: "À Propos",
+                order: "COMMANDER",
+                lang_en: "English",
+                lang_fr: "Français",
+                lang_ar: "العربية",
+                
+                // Hero
+                hero_badge: "🔥 BURGERS PREMIUM",
+                hero_line1: "FRAIS.",
+                hero_line2: "JUTEUX.",
+                hero_line3: "LÉGENDAIRE.",
+                hero_desc: "Découvrez la vraie expérience burger avec du bœuf premium, du poulet croustillant et nos sauces signature. Commandez maintenant et savourez la saveur dont tout le monde parle.",
+                btn_order: "COMMANDER",
+                btn_follow: "SUIVEZ-NOUS",
+                hero_quality: "🔥 Qualité Premium",
+                badge_discount: "-20% DE RÉDUC",
+                badge_new: "NOUVEAU: POULET ÉPICÉ",
+                
+                // Stats
+                stat_customers: "Clients Satisfaits",
+                stat_varieties: "Variétés de Burgers",
+                stat_rating: "Note",
+                
+                // Best Sellers
+                bestseller_title: "LES PLUS",
+                bestseller_popular: "POPULAIRES",
+                bestseller_desc: "Les burgers préférés de nos clients, préparés avec des ingrédients premium et une saveur légendaire.",
+                label_bestseller: "TOP VENTE",
+                label_hot: "TENDANCE",
+                item_double: "CHEESE BURGER DOUBLE",
+                desc_double: "Double steak de bœuf avec fromage fondue, légumes frais et sauce spéciale.",
+                item_mixte: "CHEESE BURGER MIXTE",
+                desc_mixte: "Le mélange parfait de bœuf et poulet avec fromage premium.",
+                item_crispy: "POULET CRISPY",
+                desc_crispy: "Filet de poulet doré et croustillant avec épices spéciales et mayo crémeuse.",
+                
+                // Menu Categories
+                menu_subtitle: "Notre Menu",
+                menu_title1: "BURGERS &",
+                menu_title2: "PLUS",
+                cat_all: "TOUT",
+                cat_beef: "BŒUF",
+                cat_chicken: "POULET",
+                cat_sides: "ACCOMPAGNEMENTS",
+                cat_drinks: "BOISSONS",
+                btn_add: "AJOUTER",
+                
+                // Menu Items
+                item_viande: "CHEESE BURGER VIANDE",
+                desc_viande: "Steak de bœuf classique avec fromage fondue",
+                desc_double_full: "Double steaks, double fromage, double saveur",
+                desc_mixte_full: "Combinaison parfaite de bœuf et poulet",
+                item_poulet: "CHEESE BURGER POULET",
+                desc_poulet: "Poulet grillé avec fromage fondue",
+                item_poulet_crispy: "CHEESE BURGER POULET CRISPY",
+                desc_poulet_crispy: "Filet de poulet croustillant avec sauce premium",
+                item_supreme: "CHEESE BURGER SUPRÊME POULET",
+                desc_supreme: "Suprême de poulet premium avec mélange spécial",
+                item_crispy_piece: "POULET CRISPY",
+                desc_crispy_piece: "1 pièce - Filet de poulet doré et croustillant",
+                item_supreme_piece: "POULET SUPRÊME",
+                desc_supreme_piece: "1 pièce - Suprême de poulet premium",
+                item_cajun: "FRITE CAJUN",
+                desc_cajun: "Frites croustillantes épicées façon Cajun",
+                item_classique: "FRITE CLASSIQUE",
+                desc_classique: "Frites dorées classiques et croustillantes",
+                item_camembert: "CAMEMBERT",
+                desc_camembert: "Tranche de Camembert extra crémeux",
+                item_kiri: "KIRI",
+                desc_kiri: "Fromage fondu crémeux",
+                item_gruyere: "GRUYÈRE",
+                desc_gruyere: "Tranche de Gruyère Suisse premium",
+                item_canette: "GAZEUSE CANETTE",
+                desc_canette: "Canette de soda - Plusieurs saveurs",
+                item_bouteille: "GAZEUSE BOUTEILLE",
+                desc_bouteille: "Bouteille de soda - 500ml",
+                item_jus: "JUS BOUTEILLE",
+                desc_jus: "Bouteille de jus de fruits frais",
+                
+                // Club
+                club_badge: "MEMBRE EXCLUSIF",
+                club_title1: "REJOIGNEZ LE",
+                club_title2: "ARA CLUB",
+                club_desc: "Débloquez des avantages exclusifs pour les accros aux burgers.",
+                benefit1: "Réductions exclusives membres",
+                benefit2: "Frites gratuites sur certaines commandes",
+                benefit3: "Accès anticipé aux nouveaux burgers",
+                benefit4: "Offres surprises chaque semaine",
+                benefit5: "Points de fidélité à chaque achat",
+                monthly_sub: "Abonnement Mensuel",
+                month: "mois",
+                btn_subscribe: "S'ABONNER",
+                cancel_note: "Annulation à tout moment. Sans frais cachés.",
+                
+                // Why Choose Us
+                why_fresh: "FRAIS CHAQUE JOUR",
+                why_fresh_desc: "Ingrédients frais sourcés chaque matin",
+                why_flavor: "GROS SAVEURS",
+                why_flavor_desc: "Assaisonnement audacieux et sauces spéciales",
+                why_delivery: "LIVRAISON RAPIDE",
+                why_delivery_desc: "Chaud et frais chez vous en 30 min",
+                why_quality: "QUALITÉ PREMIUM",
+                why_quality_desc: "Bœuf et poulet de haute qualité uniquement",
+                
+                // Reviews
+                reviews_title1: "CE QUE DISENT",
+                reviews_title2: "LES CLIENTS",
+                review1: "\"Le bœuf est incroyablement juteux. Meilleur burger en Algérie !\"",
+                review2: "\"Meilleures frites en ville. L'assaisonnement Cajun est addictif.\"",
+                review3: "\"Livraison rapide et emballage propre. ARA Burger est mon choix !\"",
+                
+                // About
+                about_title1: "NOTRE",
+                about_title2: "HISTOIRE",
+                about_desc1: "ARA BURGER est plus qu'un simple restaurant de burgers — c'est une expérience gustative complète conçue pour les vrais amateurs de burgers. Nous servons des burgers smash premium, du bœuf grillé juteux, du poulet croustillant et des sauces artisanales pour une bouchée parfaite à chaque fois.",
+                about_desc2: "Chaque repas est préparé frais, avec des ingrédients de haute qualité, des petits pains toastés moelleux et des saveurs intenses qui satisfont votre faim instantanément.",
+                established: "Fondé",
+                location: "Localisation",
+                made_with: "FAIT AVEC",
+                passion: "PASSION",
+                
+                // Contact
+                contact_title1: "CONTACTEZ-",
+                contact_title2: "NOUS",
+                contact_desc: "Besoin d'aide pour votre commande ? Vous voulez des informations sur les ingrédients ou la livraison ? Nous sommes toujours là pour vous.",
+                whatsapp_desc: "Réponses rapides & suivi de commande",
+                insta_desc: "Suivez-nous pour nouveautés & offres",
+                hours_title: "HEURES D'OUVERTURE",
+                days_week: "Lun - Jeu",
+                days_weekend: "Ven - Dim",
+                
+                // Footer
+                footer_desc: "Frais. Juteux. Légendaire. Découvrez la vraie expérience burger.",
+                quick_links: "LIENS RAPIDES",
+                contact_info: "CONTACT",
+                whatsapp_support: "Support WhatsApp",
+                algiers: "Alger, Algérie",
+                newsletter: "NEWSLETTER",
+                rights: "Tous Droits Réservés",
+                made_with_love: "Fait avec passion pour les amateurs de burgers",
+                
+                // Cart
+                your_order: "VOTRE",
+                empty_cart: "Votre panier est vide",
+                total: "TOTAL",
+                checkout: "PAIEMENT"
+            },
+            
+            ar: {
+                // Navigation
+                nav_home: "الرئيسية",
+                nav_menu: "القائمة",
+                nav_club: "النادي",
+                nav_about: "من نحن",
+                order: "اطلب",
+                lang_en: "English",
+                lang_fr: "Français",
+                lang_ar: "العربية",
+                
+                // Hero
+                hero_badge: "🔥 برجر الشارع الفاخر",
+                hero_line1: "طازج.",
+                hero_line2: "عصير.",
+                hero_line3: "أسطوري.",
+                hero_desc: "تذوق تجربة البرجر الحقيقية مع لحم البقر الفاخر، الدجاج المقرمش، وصلصاتنا المميزة. اطلب الآن واستمتع بالنكهة التي يتحدث عنها الجميع.",
+                btn_order: "اطلب الآن",
+                btn_follow: "تابعنا",
+                hero_quality: "🔥 جودة ممتازة",
+                badge_discount: "خصم 20%",
+                badge_new: "جديد: دجاج حار",
+                
+                // Stats
+                stat_customers: "عميل سعيد",
+                stat_varieties: "تشكيلة برجر",
+                stat_rating: "تقييم",
+                
+                // Best Sellers
+                bestseller_title: "الأكثر",
+                bestseller_popular: "شعبية",
+                bestseller_desc: "برجر المفضل لعملائنا، مصنوع من مكونات فاخرة ونكهة أسطورية.",
+                label_bestseller: "الأكثر مبيعاً",
+                label_hot: "جديد",
+                item_double: "تشيز برجر دبل",
+                desc_double: "قطعتان لحم بقري مع جبن ذائب، خضار طازج، وصلصة خاصة.",
+                item_mixte: "تشيز برجر ميكست",
+                desc_mixte: "المزيج المثالي من اللحم البقري والدجاج مع جبن فاخر.",
+                item_crispy: "دجاج كريسبي",
+                desc_crispy: "فيليه دجاج ذهبي مقرمش مع بهارات خاصة ومايونيز كريمي.",
+                
+                // Menu Categories
+                menu_subtitle: "قائمتنا",
+                menu_title1: "برجر &",
+                menu_title2: "المزيد",
+                cat_all: "الكل",
+                cat_beef: "لحم",
+                cat_chicken: "دجاج",
+                cat_sides: "إضافات",
+                cat_drinks: "مشروبات",
+                btn_add: "أضف",
+                
+                // Menu Items
+                item_viande: "تشيز برجر لحم",
+                desc_viande: "قطعة لحم بقري كلاسيكية مع جبن ذائب",
+                desc_double_full: "قطعتان لحم، جبن مزدوج، نكهة مزدوجة",
+                desc_mixte_full: "مزيج مثالي من اللحم البقري والدجاج",
+                item_poulet: "تشيز برجر دجاج",
+                desc_poulet: "دجاج مشوي مع جبن ذائب",
+                item_poulet_crispy: "تشيز برجر دجاج كريسبي",
+                desc_poulet_crispy: "فيليه دجاج مقرمش مع صلصة فاخرة",
+                item_supreme: "تشيز برجر سوبرم دجاج",
+                desc_supreme: "صدر دجاج فاخر مع مزيج خاص",
+                item_crispy_piece: "دجاج كريسبي",
+                desc_crispy_piece: "قطعة واحدة - فيليه دجاج ذهبي مقرمش",
+                item_supreme_piece: "صدر دجاج سوبرم",
+                desc_supreme_piece: "قطعة واحدة - صدر دجاج فاخر",
+                item_cajun: "بطاطا كاجون",
+                desc_cajun: "بطاطا مقلية مقرمشة بنكهة كاجون الحارة",
+                item_classique: "بطاطا كلاسيكية",
+                desc_classique: "بطاطا ذهبية مقلية كلاسيكية",
+                item_camembert: "كامامبير",
+                desc_camembert: "شريحة جبن كامامبير إضافية كريمية",
+                item_kiri: "كيري",
+                desc_kiri: "جبن كريمي معالج",
+                item_gruyere: "جرويير",
+                desc_gruyere: "شريحة جبن جرويير سويسري فاخر",
+                item_canette: "مشروب غازي علبة",
+                desc_canette: "علبة صودا - نكهات متنوعة",
+                item_bouteille: "مشروب غازي زجاجة",
+                desc_bouteille: "زجاجة صودا - 500 مل",
+                item_jus: "عصير زجاجة",
+                desc_jus: "زجاجة عصير فواكه طازج",
+                
+                // Club
+                club_badge: "عضوية حصرية",
+                club_title1: "انضم إلى",
+                club_title2: "نادي آرا",
+                club_desc: "احصل على مزايا حصرية مصممة لعشاق البرجر.",
+                benefit1: "خصومات حصرية للأعضاء فقط",
+                benefit2: "بطاطا مجانية على طلبات مختارة",
+                benefit3: "وصول مبكر للبرجر الجديد",
+                benefit4: "عروض مفاجئة كل أسبوع",
+                benefit5: "نقاط ولاء على كل عملية شراء",
+                monthly_sub: "اشتراك شهري",
+                month: "شهر",
+                btn_subscribe: "اشترك الآن",
+                cancel_note: "إلغاء في أي وقت. بدون رسوم خفية.",
+                
+                // Why Choose Us
+                why_fresh: "طازج يومياً",
+                why_fresh_desc: "مكونات طازجة يتم sourcingها كل صباح",
+                why_flavor: "نكهات قوية",
+                why_flavor_desc: "بهارات جريئة وصلصات خاصة",
+                why_delivery: "توصيل سريع",
+                why_delivery_desc: "ساخن وطازج لباب منزلك في 30 دقيقة",
+                why_quality: "جودة ممتازة",
+                why_quality_desc: "لحم بقري ودجاج عالي الجودة فقط",
+                
+                // Reviews
+                reviews_title1: "ماذا يقول",
+                reviews_title2: "الناس",
+                review1: "\"اللحم رائع العصير. أفضل برجر جربته في الجزائر!\"",
+                review2: "\"أفضل بطاطا في المدينة. بهار الكاجون يخليك تدمن.\"",
+                review3: "\"توصيل سريع وتغليف نظيف. آرا برجر هو اختياري دائماً!\"",
+                
+                // About
+                about_title1: "قصت",
+                about_title2: "نا",
+                about_desc1: "آرا برجر هو أكثر من مجرد مطعم برجر — إنه تجربة نكهة كاملة مصممة لعشاق البرجر الحقيقيين. نقدم برجر سماش فاخر، لحم بقري مشوي عصير، دجاج مقرمش، وصلصات يدوية الصنع لإيصال القضمة المثالية في كل مرة.",
+                about_desc2: "كل وجبة يتم تحضيرها طازجة، باستخدام مكونات عالية الجودة، خبز محمص طري، ونكهات جريئة تشبع جوعك فوراً.",
+                established: "تأسس",
+                location: "الموقع",
+                made_with: "مصنوع بـ",
+                passion: "شغف",
+                
+                // Contact
+                contact_title1: "تواصل",
+                contact_title2: "معنا",
+                contact_desc: "تحتاج مساعدة في طلبك؟ تريد الاستفسار عن المكونات أو التوصيل؟ نحن دائماً هنا من أجلك.",
+                whatsapp_desc: "ردود سريعة وتتبع الطلبات",
+                insta_desc: "تابعنا للبرجر الجديد والعروض",
+                hours_title: "ساعات العمل",
+                days_week: "الإثنين - الخميس",
+                days_weekend: "الجمعة - الأحد",
+                
+                // Footer
+                footer_desc: "طازج. عصير. أسطوري. تذوق تجربة البرجر الحقيقية.",
+                quick_links: "روابط سريعة",
+                contact_info: "اتصل بنا",
+                whatsapp_support: "دعم واتساب",
+                algiers: "الجزائر العاصمة",
+                newsletter: "النشرة البريدية",
+                rights: "جميع الحقوق محفوظة",
+                made_with_love: "صنع بشغف لعشاق البرجر",
+                
+                // Cart
+                your_order: "طلب",
+                empty_cart: "سلة التسوق فارغة",
+                total: "المجموع",
+                checkout: "إتمام الشراء"
+            }
+        };
+
+        // Current language state
+        let currentLang = 'en';
+        let cart = [];
+
+        // Detect system language
+        function detectSystemLanguage() {
+            const systemLang = navigator.language || navigator.userLanguage;
+            const langCode = systemLang.split('-')[0].toLowerCase();
+            
+            if (langCode === 'ar') return 'ar';
+            if (langCode === 'fr') return 'fr';
+            return 'en'; // Default to English
+        }
+
+        // Initialize language
+        function initLanguage() {
+            const savedLang = localStorage.getItem('ara-burger-lang');
+            const detectedLang = detectSystemLanguage();
+            const initialLang = savedLang || detectedLang;
+            
+            switchLang(initialLang, false);
+            
+            // Hide loader after initialization
+            setTimeout(() => {
+                document.getElementById('loader-screen').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('loader-screen').style.display = 'none';
+                }, 500);
+            }, 800);
+        }
+
+        // Switch language function
+        function switchLang(lang, save = true) {
+            if (!translations[lang]) return;
+            
+            currentLang = lang;
+            
+            // Save preference
+            if (save) {
+                localStorage.setItem('ara-burger-lang', lang);
+            }
+            
+            // Update HTML lang and dir attributes
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            
+            // Update active button state
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if (btn.dataset.lang === lang) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            
+            // Animate content transition
+            document.querySelectorAll('.lang-content').forEach(el => {
+                el.classList.add('switching');
+            });
+            
+            setTimeout(() => {
+                // Update all translated elements
+                document.querySelectorAll('[data-translate]').forEach(el => {
+                    const key = el.dataset.translate;
+                    if (translations[lang][key]) {
+                        el.textContent = translations[lang][key];
+                    }
+                });
+                
+                // Update placeholder for inputs
+                document.querySelectorAll('input[data-translate-placeholder]').forEach(el => {
+                    const key = el.dataset.translatePlaceholder;
+                    if (translations[lang][key]) {
+                        el.placeholder = translations[lang][key];
+                    }
+                });
+                
+                // Remove switching class
+                document.querySelectorAll('.lang-content').forEach(el => {
+                    el.classList.remove('switching');
+                });
+                
+                // Update cart UI if open
+                updateCart();
+                
+                // Show toast notification
+                showToast(translations[lang].lang_switch || 'Language switched', 'success');
+            }, 300);
+        }
+
+        // Toast notification system
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            const icon = toast.querySelector('i');
+            
+            toastMessage.textContent = message;
+            toast.className = 'toast show ' + type;
+            
+            if (type === 'success') {
+                icon.className = 'fas fa-check-circle text-ara-gold text-xl';
+            } else if (type === 'error') {
+                icon.className = 'fas fa-exclamation-circle text-red-500 text-xl';
+            }
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Cart functionality
+        function addToCart(name, price, key) {
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ name, price, quantity: 1, key });
+            }
+            updateCart();
+            openCart();
+            
+            // Visual feedback
+            const btn = event.target.closest('button');
+            const originalHTML = btn.innerHTML;
+            const addedText = currentLang === 'ar' ? 'تمت الإضافة!' : currentLang === 'fr' ? 'AJOUTÉ!' : 'ADDED!';
+            btn.innerHTML = '<i class="fas fa-check"></i> ' + addedText;
+            btn.classList.add('bg-green-600');
+            
+            showToast(currentLang === 'ar' ? 'تمت إضافة العنصر!' : currentLang === 'fr' ? 'Article ajouté!' : 'Item added!');
+            
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+                btn.classList.remove('bg-green-600');
+            }, 1000);
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function updateQuantity(index, change) {
+            cart[index].quantity += change;
+            if (cart[index].quantity <= 0) {
+                removeFromCart(index);
+            } else {
+                updateCart();
+            }
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById('cart-items');
+            const cartCount = document.getElementById('cart-count');
+            const cartTotal = document.getElementById('cart-total');
+            
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            if (totalItems > 0) {
+                cartCount.textContent = totalItems;
+                cartCount.classList.remove('hidden');
+            } else {
+                cartCount.classList.add('hidden');
+            }
+            
+            cartTotal.textContent = totalPrice + ' DA';
+            
+            if (cart.length === 0) {
+                const emptyText = currentLang === 'ar' ? 'سلة التسوق فارغة' : currentLang === 'fr' ? 'Votre panier est vide' : 'Your cart is empty';
+                cartItems.innerHTML = `
+                    <div class="text-center text-gray-500 py-12">
+                        <i class="fas fa-shopping-basket text-4xl mb-4 opacity-50"></i>
+                        <p>${emptyText}</p>
+                    </div>
+                `;
+            } else {
+                cartItems.innerHTML = cart.map((item, index) => `
+                    <div class="bg-ara-dark rounded-xl p-4 border border-white/5 flex justify-between items-center animate-slide-up">
+                        <div>
+                            <h4 class="font-bold text-white">${item.name}</h4>
+                            <p class="text-ara-gold">${item.price} DA</p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <button onclick="updateQuantity(${index}, -1)" class="w-8 h-8 rounded-full bg-ara-charcoal hover:bg-ara-red flex items-center justify-center transition-colors">
+                                <i class="fas fa-minus text-xs"></i>
+                            </button>
+                            <span class="text-white font-bold w-4 text-center">${item.quantity}</span>
+                            <button onclick="updateQuantity(${index}, 1)" class="w-8 h-8 rounded-full bg-ara-charcoal hover:bg-ara-red flex items-center justify-center transition-colors">
+                                <i class="fas fa-plus text-xs"></i>
+                            </button>
+                            <button onclick="removeFromCart(${index})" class="ml-2 text-gray-500 hover:text-red-500 transition-colors">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function openCart() {
+            document.getElementById('cart-modal').classList.remove('hidden');
+            setTimeout(() => {
+                const panel = document.getElementById('cart-panel');
+                panel.classList.remove('translate-x-full');
+                if (currentLang === 'ar') {
+                    panel.classList.add('translate-x-full');
+                    panel.style.transform = 'translateX(0)';
+                }
+            }, 10);
+        }
+
+        function closeCart() {
+            const panel = document.getElementById('cart-panel');
+            panel.classList.add('translate-x-full');
+            if (currentLang === 'ar') {
+                panel.style.transform = 'translateX(100%)';
+            }
+            setTimeout(() => {
+                document.getElementById('cart-modal').classList.add('hidden');
+            }, 300);
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                const msg = currentLang === 'ar' ? 'السلة فارغة!' : currentLang === 'fr' ? 'Panier vide!' : 'Cart is empty!';
+                showToast(msg, 'error');
+                return;
+            }
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const items = cart.map(item => `${item.name} x${item.quantity} = ${item.price * item.quantity}DA`).join('%0A');
+            const msg = currentLang === 'ar' ? 'طلب جديد من موقع آرا برجر:' : currentLang === 'fr' ? 'Nouvelle commande ARA BURGER:' : 'New Order from ARA BURGER:';
+            const message = `${msg}%0A%0A${items}%0A%0A${currentLang === 'ar' ? 'المجموع' : currentLang === 'fr' ? 'Total' : 'Total'}: ${total}DA`;
+            window.open(`https://wa.me/213XXXXXXXXX?text=${message}`, '_blank');
+        }
+
+        // Menu filtering
+        function filterMenu(category) {
+            const items = document.querySelectorAll('.menu-item');
+            const tabs = document.querySelectorAll('.menu-tab');
+            
+            tabs.forEach(tab => {
+                if (tab.dataset.category === category) {
+                    tab.classList.add('bg-ara-gold', 'text-ara-dark');
+                    tab.classList.remove('text-ara-gold');
+                } else {
+                    tab.classList.remove('bg-ara-gold', 'text-ara-dark');
+                    tab.classList.add('text-ara-gold');
+                }
+            });
+            
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'scale(1)';
+                    }, 10);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.9)';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg');
+                navbar.classList.replace('h-20', 'h-16');
+            } else {
+                navbar.classList.remove('shadow-lg');
+                navbar.classList.replace('h-16', 'h-20');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', initLanguage);
+    </script>
+</body>
+</html>
